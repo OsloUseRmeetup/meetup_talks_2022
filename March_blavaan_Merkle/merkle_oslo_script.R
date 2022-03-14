@@ -3,7 +3,11 @@
 ##################################################
 library("blavaan")
 library("future")
-plan("multicore")
+if (.Platform$OS.type == "windows") {
+  plan("multisession")
+} else {
+  plan("multicore")
+}
 library("bayesplot")
 
 
